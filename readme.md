@@ -17,7 +17,7 @@ bower install
 ```
 npm install -g fis
 npm install -g fis-angular
-fisa release -cwL （本地开发通过nginx_cms代理发布）
+fisa release -cwL （发布本地）
 fisa release -cwd remote （发布到远程或联调环境）
 ```
 
