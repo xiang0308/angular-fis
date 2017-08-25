@@ -1,0 +1,16 @@
+<span class="sort-btn-ctn ry-list-sort">
+    <a
+        class="btn btn-link"
+        ng-disabled="vm.isFirst()"
+        ng-class="{disabled: vm.isFirst()}"
+        ng-click="vm.sortUp(vm.list[vm.index], vm.list)">
+        上移
+    </a>
+    <a
+        class="btn btn-link"
+        ng-disabled="vm.isLast()"
+        ng-class="{disabled: vm.isLast()}"
+        ng-click="vm.sortDown(vm.list[vm.index], vm.list)">
+        下移
+    </a>
+</span>

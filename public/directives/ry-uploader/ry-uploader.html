@@ -1,0 +1,22 @@
+<div class="dt-ry-uploader">
+    <div
+        class="upload-btn"
+        ng-if="!vm.fileUrl && !vm.showProgress"
+        ng-click="vm.upload()">
+    </div>
+    <div class="clearfix ng-scope" ng-if="vm.fileUrl">
+        <div style="position:relative;">
+            <div class="img-box">
+                <video autoplay="autoplay" loop="loop" ng-if="options.type === 'video' " width="100%" height="100%">
+                    <source ng-src="{{vm.fileUrl|trustUrl}}" />
+                </video>
+                <img ng-src="{{vm.fileUrl}}" ng-if="options.type === 'image'" width="100%" height="100%"/>
+                <embed load-flash align="center" ng-src="{{vm.fileUrl|trustUrl}}" width="100%" height="100%"
+                    ng-if="options.type === 'flash'"
+                    type="application/x-shockwave-flash"
+                    pluginspage="http://www.macromedia.com/go/getflashplayer" />
+            </div>
+            <i class="delete ui-delete" ng-click="vm.deleteFile()" role="button" tabindex="0"></i>
+        </div>
+    </div>
+</div>

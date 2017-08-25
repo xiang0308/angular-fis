@@ -1,0 +1,14 @@
+<div class="sort-btn-ctn ry-list-curd">
+	<button
+		class="icon-plus"
+		ng-class="{disabled: vm.canAdditem()}"
+		ng-disabled="vm.canAdditem()"
+		ng-click="vm.addList(vm.index, vm.list)">
+	</button>
+	<button
+		class="icon-minus"
+		ng-disabled="vm.isOne()"
+		ng-class="{disabled: vm.isOne()}"
+		ng-click="vm.deleteList(vm.index, vm.list)">
+	</button>
+</div>

@@ -1,0 +1,32 @@
+<section class="dt-ry-mirror-analysis-list">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>模版</th>
+                <th>页面</th>
+                <th>浏览次数（PV)</th>
+                <th>累计浏览时长（小时）</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in vm.list track by $index">
+                <td>
+                    {{item.template}}
+                </td>
+                <td>
+                    {{item.page}}
+                </td>
+                <td>
+                    {{item.view_num}}
+                </td>
+                <td>
+                    {{item.view_duration}}
+                </td>
+            </tr>
+            <tr ng-if="!vm.list || vm.list.length == 0">
+                <td colspan="4">暂无记录</td>
+            </tr>
+        </tbody>
+    </table>
+    <ry-page class="pull-right" page-options="vm.pageOptions" action="vm.pageAction"></ry-page>
+</section>

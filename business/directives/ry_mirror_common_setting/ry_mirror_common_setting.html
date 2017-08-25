@@ -1,0 +1,87 @@
+<section class="dt-ry-mirror-common-setting">
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <div class="col-md-1 control-label">
+                待机
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2 control-label">
+                自动待机:
+            </div>
+            <div class="col-md-4">
+                <span class="inline-block">屏前无人</span>
+                <input
+                    type="text"
+                    max-length="2"
+                    class="form-control inline-block w50"
+                    ng-model="vm.field.await"/>
+                <span class="inline-block">分钟后自动待机</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2 control-label">
+                待机图片:
+            </div>
+            <div class="col-md-6 pt7">
+                <label class="cms-radio-label" ng-repeat="item in vm.awaitImages track by $index">
+                    <span class="cms-radio inline-block" ng-class="{'selected': vm.field.selected == $index}">
+                        <input
+                            type="radio"
+                            ng-model="vm.field.selected"
+                            ng-value="item.id">
+                        <i></i>
+                    </span>
+                    <span class="inline-block w114" ng-bind="item.name"></span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group ui-await-pic">
+            <div class="col-md-6 col-md-offset-2">
+                <img
+                    ng-if="vm.field.selected == 0"
+                    width="100%"
+                    height="100%"
+                    ng-if="vm.field.default_pic"
+                    ng-src="vm.field.default_pic">
+            </div>
+            <div class="col-md-6 ui-upload-file">
+                <ry-uploader
+                    ng-if="vm.field.selected == 1"
+                    source="vm.field.self_pic"
+                    complete-event="vm.uploadedSelfImg"
+                    file-key="self_pic"
+                    options="vm.options"
+                    mall-id="{{vm.mall_id}}">
+                </ry-uploader>
+            </div>
+            <div class="col-md-6 ui-upload-tip" ng-if="vm.field.selected == 1">
+                <div>1. 支持jpg、png格式</div>
+                <div>2. 图片大小不超过10M</div>
+                <div>3. 请尽量使用无背景的图片</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-1 control-label">
+                熄屏
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2 control-label">
+                自动熄屏:
+            </div>
+            <div class="col-md-4">
+                <span class="inline-block">待机</span>
+                <input
+                    type="text"
+                    max-length="2"
+                    class="form-control inline-block w50"
+                    ng-model="vm.field.putout"/>
+                <span class="inline-block">分钟内无操作自动熄屏</span>
+            </div>
+        </div>
+        <div class="form-group mt100">
+            <a class="ry-btn large solid-bright" ng-click="vm.save()">保存</a>
+        </div>
+    </form>
+</section>

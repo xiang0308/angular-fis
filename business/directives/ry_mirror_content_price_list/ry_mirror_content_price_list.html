@@ -1,0 +1,50 @@
+<div class="ry-mirror-content-price-list">
+    <div class="row" ng-repeat="item in vm.list track by $index">
+        <ry-panel
+            change-action="vm.changeAction"
+            ng-model-options="{
+                'title': vm.menuTitle($index),
+                'showToolbar': true,
+                'list': vm.list,
+                'index': $index
+            }">
+            <div class="row">
+                <div class="col-md-4 control-label">
+                    <ry-star></ry-star>主图：
+                </div>
+                <div class="col-md-4">
+                    <ry-uploader
+                        source="item.home_bg_img"
+                        complete-event="vm.uploadedHomeImg"
+                        file-key="home_bg_img"
+                        options="vm.homeBgOptions">
+                    </ry-uploader>
+                </div>
+                <div class="col-md-8 ui-price-tips">
+                    <span>1、支持jpg、png格式</span>
+                    <span>2、图片尺寸支持{{vm.homeBgOptions.ratio}}大小</span>
+                    <span>3、图片大小不超过{{vm.homeBgOptions.maxSize}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    链接：
+                </div>
+                <div class="col-md-4">
+                    <select class="form-control"
+                            ng-options="v.id as v.text for v in vm.linkData"
+                            ng-model="item.selected">
+                    </select>
+                    <input type="text" placeholder="请以http://开头" ng-model="item.link">
+                </div>
+            </div>
+        </ry-panel>
+    </div>
+    <div class="row ui-price-add" ng-click="vm.add()">+添加新的位置(最多可添加10个)</div>
+    <div class="row">
+        <div class="col-md-12">
+            <a class="ry-btn large stroke-bright" ng-click="vm.navToList()" >返回</a>
+            <a class="ry-btn large solid-bright" ng-click="vm.save()">保存</a>
+        </div>
+    </div>
+</div>

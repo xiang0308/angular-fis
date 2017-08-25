@@ -1,0 +1,18 @@
+<section class="dt-ry-mirror-content-search p-list">
+    <form class="form-inline" role="form">
+        <div class="form-group">
+            <label>店铺名称:</label>
+            <input type="text" class="form-control w320" placeholder="请输入店铺名称" ng-model="vm.filter.name"/>
+        </div>
+        <div class="form-group">
+            <label>模版:</label>
+            <select class="form-control"
+                    ng-options="v.template as v.text for v in vm.templateData"
+                    ng-model="vm.filter.template">
+            </select>
+        </div>
+        <div class="form-group">
+            <a class="ry-btn solid-dark" ng-click="vm.search()">查询</a>
+        </div>
+    </form>
+</section>

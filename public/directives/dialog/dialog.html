@@ -1,0 +1,16 @@
+
+<div class="dialog confirm" ng-class="{isToaster: isToaster}">
+    <div class="dialog-header">
+        {{title}}
+    </div>
+    <div class="dialog-body">
+        <span class="text-wrap" ng-bind-html="content"></span>
+    </div>
+    <div class="dialog-footer">
+
+        <a class="ry-btn large mr5"
+            ng-repeat="btn in btns"
+            ng-class="{'solid-bright': btn.isImportant, 'stroke-bright': !btn.isImportant}"
+            ng-click="btnClick($index)">{{btn.text}}</a>
+    </div>
+</div>

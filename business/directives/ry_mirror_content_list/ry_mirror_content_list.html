@@ -1,0 +1,37 @@
+<section class="dt-ry-mirror-content-list">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>店铺名称</th>
+                <th>关联模版</th>
+                <th>最后修改人</th>
+                <th>最后修改时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in vm.list track by $index">
+                <td>
+                    {{item.shop_name}}
+                </td>
+                <td>
+                    {{item.relate_template}}
+                </td>
+                <td>
+                    {{item.update_by}}
+                </td>
+                <td>
+                    {{item.update_date}}
+                </td>
+                <td align="center">
+                    <a class="ry-link" ng-click="vm.editContent(item)">编辑内容</a>
+                    <a class="ry-link" ng-click="vm.copy(item)">复制</a>
+                </td>
+            </tr>
+            <tr ng-if="!vm.list || vm.list.length == 0">
+                <td colspan="5">暂无记录</td>
+            </tr>
+        </tbody>
+    </table>
+    <ry-page class="pull-right" page-options="vm.pageOptions" action="vm.pageAction"></ry-page>
+</section>

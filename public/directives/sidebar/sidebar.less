@@ -1,0 +1,83 @@
+/**
+ * @file 侧边栏菜单样式
+ * @author zhaoran
+ * @date 2015-06-03
+ */
+ @site-white-color: #ffffff;
+ @site-main-color: #4b6993;
+ @site-important-color :#333333;
+ @site-normal-color :#666666;
+ @site-forbidden-color :#c8c8c8;
+ @site-red-color: #ED436F;
+ @site-border-color: #cccccc;
+ @site-black-color: #000000;
+ @site-gray-color: #9C9C9C;
+
+ @theme-blue: #4ab3fb;
+ @theme-red: #ef426f;
+
+.w-sidebar{
+    // min-height: 700px;
+    border-right: 1px solid #ccc;
+    color: #333;
+
+    .level1-wrapper{
+
+        .level1{
+            position: relative;
+            padding-left: 30px;
+            height: 60px;
+            line-height: 60px;
+            border-bottom: 1px solid #dedede;
+
+            font-size: 14px;
+            cursor: pointer;
+
+            &.active{
+                color: @theme-red;
+            }
+
+            .fa{
+                position: absolute;
+                top: 23px;
+                right: 40px;
+                transition: all 0.2s;
+            }
+
+
+        }
+
+        &.expanded{
+
+            .level2-wrapper{
+                // display: block;
+            }
+        }
+    }
+
+
+
+    .level2-wrapper{
+
+        display: none;
+
+        background: #f2f2f2;
+
+        .level2{
+            padding-left: 50px;
+            height: 40px;
+            line-height: 40px;
+
+            font-size: 12px;
+            cursor: pointer;
+
+            border-bottom: 1px solid #dedede;
+
+            &.active{
+                color: #fff;
+                background: @theme-red;
+            }
+        }
+
+    }
+}

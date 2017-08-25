@@ -1,0 +1,110 @@
+/*
+ * @Author: wangxiang
+ * @Date:   2017-08-25 15:25:33
+ * @Last Modified by:   wangxiang
+ * @Last Modified time: 2017-08-25 15:52:32
+ */
+
+@site-white-color: #ffffff;
+@site-main-color: #4b6993;
+@site-important-color :#333333;
+@site-normal-color :#666666;
+@site-forbidden-color :#c8c8c8;
+@site-red-color: #ED436F;
+@site-border-color: #cccccc;
+@site-black-color: #000000;
+@site-gray-color: #9C9C9C;
+
+.backdrop-login-dialog{
+
+    &.in{
+        opacity: 0.8;
+    }
+}
+
+@keyframes borderblink{
+
+    0%{
+        border-color: #ccc;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+    }
+
+    25%{
+        border-color: #e73030;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(231, 48, 48, .6);
+    }
+
+    50%{
+        border-color: #ccc;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+    }
+
+    75%{
+        border-color: #e73030;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(231, 48, 48, .6);
+    }
+
+    100%{
+        border-color: #ccc;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+    }
+}
+
+@keyframes emptyanim {}
+
+
+.window-login-dialog{
+
+    color: @site-main-color;
+
+    .modal-dialog{
+        margin-top: -166px;
+        position: fixed;
+        top: 50%;
+        left: 0;
+        right: 0;
+        width: 420px;
+
+        .modal-content{
+            border-radius: 0;
+        }
+    }
+
+    .login-area{
+        border: 1px solid #cdcdcd;
+    }
+
+    .form-horizontal{
+        margin: 55px auto 60px;
+        width: 230px;
+
+        .form-group{
+            margin-left: 0;
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-inline{
+            padding-top: 0;
+            padding-bottom: 15px;
+        }
+
+        .form-control{
+            height: 40px;
+            border-radius: 0;
+            -webkit-animation-name: "emptyanim";
+        }
+
+        .cms-btn{
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+        }
+
+        .border-blink{
+            -webkit-animation-name: "borderblink";
+            animation-duration: 2s;
+        }
+    }
+}

@@ -1,0 +1,53 @@
+/*
+ * @Author: wangxiang
+ * @Date:   2017-08-25 15:25:33
+ * @Last Modified by:   wangxiang
+ * @Last Modified time: 2017-08-25 15:28:55
+ */
+.ry-panel {
+	.ui-header {
+		color: #333;
+		padding: 3px 10px;
+		min-height: 40px;
+		background-color: #DFE4E7;
+		.ui-title {
+			float: left;
+			line-height: 36px;
+		}
+		.ui-toolbar {
+			float: right;
+		}
+	}
+	.ui-content {
+		overflow: hidden;
+		padding: 0;
+		-webkit-transition: all 0.3s;
+		transition: all 0.3s;
+	}
+	.ui-content-in {
+		margin: 15px;
+	}
+	.ui-icon {
+		display: inline-block;
+		height: 34px;
+		width: 34px;
+		outline: none;
+		border: none;
+	}
+	.icon-show-up{
+		background: url('img/show-up.png') no-repeat;
+		padding-bottom: 1px;
+	}
+
+	.icon-show-down{
+		background: url('img/show-down.png') no-repeat;
+		padding-bottom: 1px;
+	}
+
+	.icon-close{
+		background: url('img/del.png') no-repeat;
+		&.disabled {
+			background: url('img/del-disabled.png');
+		}
+	}
+}

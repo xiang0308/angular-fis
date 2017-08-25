@@ -1,0 +1,46 @@
+<section class="dt-ry-mirror-content-copy">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    <label class="cms-checkbox-label">
+                        <span class="cms-checkbox" ng-class="{'selected': vm.select_all}">
+                            <input
+                                name="all"
+                                type="checkbox"
+                                ng-model="vm.select_all"
+                                ng-change="vm.selectAll()">
+                            <i></i>
+                        </span>
+                    </label>
+                </th>
+                <th>店铺ID</th>
+                <th>店铺名称</th>
+                <th>店铺地址</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in vm.list track by $index">
+                <td>
+                    <label class="cms-checkbox-label">
+                        <span class="cms-checkbox" ng-class="{'selected': item.checked}">
+                            <input
+                                name="one"
+                                type="checkbox"
+                                ng-model="item.checked"
+                                ng-change="vm.selectOne()">
+                            <i></i>
+                        </span>
+                    </label>
+                </td>
+                <td>{{item.shop_id}}</td>
+                <td>{{item.shop_name}}</td>
+                <td>{{item.shop_address}}</td>
+            </tr>
+            <tr ng-if="!vm.list || vm.list.length == 0">
+                <td colspan="3">暂无记录</td>
+            </tr>
+        </tbody>
+    </table>
+    <ry-page class="pull-right" page-options="vm.pageOptions" action="vm.pageAction"></ry-page>
+</section>

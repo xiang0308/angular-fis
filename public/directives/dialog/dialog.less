@@ -1,0 +1,105 @@
+/*
+ * @Author: wangxiang
+ * @Date:   2017-08-25 15:25:33
+ * @Last Modified by:   wangxiang
+ * @Last Modified time: 2017-08-25 15:52:32
+ */
+.window-dialog-confirm{
+
+    top: 50%;
+    margin-top: -120px;
+
+    .modal-dialog{
+        width: 480px;
+    }
+    .modal-content{
+        border-radius: 0;
+    }
+}
+
+.window-dialog-toaster {
+    top: 50%;
+    margin-top: -120px;
+    .modal-dialog{
+        width: 300px;
+    }
+    .modal-content{
+        border-radius: 0;
+    }
+}
+
+
+.dialog{
+
+    .dialog-header{
+        height: 40px;
+        line-height: 40px;
+        text-indent: 15px;
+        font-size: 14px;
+        color: #fff;
+        background: #333;
+    }
+
+    .dialog-body{
+        display: table-cell;
+
+        width: 480px;
+        height: 100px;
+        padding: 10px 80px;
+        text-align: center;
+        vertical-align: middle;
+
+        .text-wrap{
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 14px;
+            line-height: 2;
+        }
+    }
+
+    .dialog-footer{
+        text-align: center;
+        padding-bottom: 20px;
+        .cms-btn{
+            margin: 0 5px;
+        }
+    }
+
+    &.confirm{
+
+
+        .dialog-header{
+
+        }
+
+        .dialog-body{
+
+        }
+
+        .dialog-footer{
+
+        }
+    }
+    &.isToaster {
+        width: 300px;
+        .dialog-header{
+            display: none;
+        }
+
+        .dialog-body{
+            display: table-cell;
+
+            width: 300px;
+            height: 60px;
+            padding: 10px;
+            text-align: center;
+            vertical-align: middle;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .dialog-footer{
+            display: none;
+        }
+    }
+}

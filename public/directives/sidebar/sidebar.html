@@ -1,0 +1,22 @@
+
+<nav class="w-sidebar">
+    <div class="level1-wrapper" 
+        ng-repeat="level1 in menu"
+        ng-class="{expanded: $first}">
+
+        <div class="level1"
+            ng-class="{active: $first}" 
+            ng-click="level1ClickHandler($event, level1)">
+            {{level1.title}}
+            <i class="fa fa-angle-down"
+                ng-if="level1.children && level1.children.length > 0"></i>
+        </div>
+
+        <div class="level2-wrapper"
+            ng-if="level1.children && level1.children.length > 0">
+            
+            <div class="level2" ng-repeat="level2 in level1.children"
+                ng-click="level2ClickHandler($event, level1, level2)">{{level2.title}}</div> 
+        </div>
+    </div>
+</nav>

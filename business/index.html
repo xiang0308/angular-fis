@@ -1,0 +1,45 @@
+<!doctype html>
+<html ng-app="cms">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>商家管理后台系统</title>
+    <link rel="stylesheet" type="text/css" href="http://rongyi.b0.upaiyun.com/fe/cms/1.2.2/bbq.min.css">
+    <link rel="stylesheet" type="text/css" href="/public/bower_components/Swiper/dist/css/swiper.css">
+    <link rel="stylesheet" type="text/css" href="/public/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="/public/styles/site.less">
+    <link rel="stylesheet" type="text/css" href="http://rongyi.b0.upaiyun.com/fe/ry-ui/1.4.0/ry-ui.min.css">
+    <base href="/"></base>
+</head>
+
+<body ng-controller="MainCtrl" class="body-style">
+
+    <ry-header ng-show="showHeader"></ry-header>
+    <ry-article></ry-article>
+
+    <!-- 文件上传 -->
+    <script type="text/javascript" data-fixed='true'>
+        var FileAPI = {
+            jsUrl: 'http://rongyi.b0.upaiyun.com/fe/cms/dep/FileAPI.min.js',
+            flashUrl: 'http://rongyi.b0.upaiyun.com/fe/cms/dep/FileAPI.flash.swf'
+        };
+    </script>
+
+    <!-- 基础文件打包 -->
+    <script type="text/javascript" src="http://rongyi.b0.upaiyun.com/fe/cms/1.2.2/breakfast.js"></script>
+    <script type="text/javascript" src="http://rongyi.b0.upaiyun.com/fe/cms/1.2.2/lunch.js"></script>
+    <script type="text/javascript" src="/public/bower_components/angular-touch/angular-touch.js"></script>
+    <script type="text/javascript" src="/public/bower_components/Swiper/dist/js/swiper.js"></script>
+    <script type="text/javascript" src="/public/bower_components/underscore/underscore.js"></script>
+    <script type="text/javascript" src="/public/bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+    <script type="text/javascript" src="http://rongyi.b0.upaiyun.com/fe/ry-ui/1.4.0/ry-ui.js"></script>
+
+    <!--SCRIPT_PLACEHOLDER-->
+    <script type="text/javascript">
+        require('main/app');
+    </script>
+
+</body>
+
+</html>

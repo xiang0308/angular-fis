@@ -1,0 +1,46 @@
+<section class="dt-ry-mirror-content-edit">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>菜单项</th>
+                <th>修改人</th>
+                <th>修改时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="parent in vm.list track by $index">
+            <tr>
+                <td>
+                    <span class="sup-title">{{parent.parent_menu}}</span>
+                </td>
+                <td>
+                    {{parent.update_by}}
+                </td>
+                <td>
+                    {{parent.update_date}}
+                </td>
+                <td align="center">
+                    <a class="ry-link" ng-click="vm.editContentTemplate(parent)" ng-if="parent.menu_type == 1">编辑内容</a>
+                </td>
+            </tr>
+            <tr ng-repeat="child in parent.children_menu track by $index">
+                <td>
+                    <span class="sub-title">{{child.type}}</span>
+                </td>
+                <td>
+                    {{child.update_by}}
+                </td>
+                <td>
+                    {{child.update_date}}
+                </td>
+                <td align="center">
+                    <a class="ry-link" ng-click="vm.editContentTemplate(child)" ng-if="child.menu_type == 1">编辑内容</a>
+                </td>
+            </tr>
+        </tbody>
+        <tr ng-if="!vm.list || vm.list.length == 0">
+            <td colspan="4">暂无记录</td>
+        </tr>
+    </table>
+    <ry-page class="pull-right" page-options="vm.pageOptions" action="vm.pageAction"></ry-page>
+</section>

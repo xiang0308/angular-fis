@@ -1,0 +1,59 @@
+/**
+ * @file stepmark 样式
+ * @author wangzhenfeng
+ * @date 2015-06-09
+ */
+
+ @site-white-color: #ffffff;
+ @site-main-color: #4b6993;
+ @site-important-color :#333333;
+ @site-normal-color :#666666;
+ @site-forbidden-color :#c8c8c8;
+ @site-red-color: #ED436F;
+ @site-border-color: #cccccc;
+ @site-black-color: #000000;
+ @site-gray-color: #9C9C9C;
+
+ .prevent-default(){
+     cursor: not-allowed;
+     pointer-events: none;
+ }
+
+.w-stepmark{
+    width: 100%;
+    height: auto;
+    overflow: auto;
+
+    span{
+        display: inline-block;
+        float: left;
+        color: #6b6b6b;
+        margin-right: 50px;
+        padding-bottom: 5px;
+
+        .prevent-default();
+
+        div{
+            width: 18px;
+            height: 18px;
+            text-align: center;
+            line-height: 18px;
+            border-radius: 9px;
+            background: #bbbbbb;
+            color: #fff;
+            display: inline-block;
+            float: left;
+            margin-right: 10px;
+        }
+
+    }
+    span.active{
+        color: #51b2f7;
+        border-bottom: 2px solid #51b2f7;
+
+        div{
+            background: #51b2f7;
+        }
+    }
+
+}

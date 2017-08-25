@@ -1,0 +1,28 @@
+<section class="ry-panel panel panel-default">
+    <header class="ui-header panel-heading">
+        <div class="ui-title">
+            {{vm.title}}
+        </div>
+        <div class="ui-toolbar" ng-if="vm.showToolbar">
+            <ry-list-sort
+                change-action="vm.changeAction"
+                ng-model-options="{
+                    list: vm.list,
+                    index: vm.index
+                }"
+            >
+            </ry-list-sort>
+            <a
+                class="btn btn-link"
+                ng-click="vm.close()"
+                ng-disabled="vm.isOne()"
+                ng-class="{disabled: vm.isOne()}"
+            >
+                删除
+            </a>
+        </div>
+    </header>
+    <div class="ui-content panel-body" ng-style="{height: vm.show ? 'auto': '0'}">
+        <div class="ui-content-in" ng-transclude></div>
+    </div>
+</section>

@@ -1,0 +1,44 @@
+/**
+ * @file tab样式
+ * @author zhaoran
+ * @date 2015-06-08
+ */
+@site-white-color: #ffffff;
+@site-main-color: #4b6993;
+@site-important-color: #333333;
+@site-normal-color: #666666;
+@site-forbidden-color: #c8c8c8;
+@site-red-color: #ED436F;
+@site-border-color: #cccccc;
+@site-black-color: #000000;
+@site-gray-color: #9C9C9C;
+
+.w-mytab {
+    height: 30px;
+    border-bottom: 1px solid #E0E1E2;
+
+    a {
+        display: block;
+        position: relative;
+        float: left;
+        // margin-right: -1px;
+        width: 120px;
+        font-size: 13px;
+        text-align: center;
+        line-height: 28px;
+        // border: 1px solid #ddd;
+        border-bottom: none;
+
+        &.active {
+            width: 120px;
+            // margin-left: -1px;
+            //
+            z-index: 1;
+            color: #4b6993;
+            border-bottom: 4px solid #4b6993;
+        }
+    }
+    span{
+        color: red;
+    }
+}
