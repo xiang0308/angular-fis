@@ -1,9 +1,9 @@
 /**
- * @file 侧边栏菜单
- * @author zhaoran
- * @date 2015-06-03
+ * @Author: zhaoran
+ * @Date:   2017-08-16T19:10:13+08:00
+ * @Last modified by:   Liao Hui
+ * @Last modified time: 2017-09-13T17:01:33+08:00
  */
-
 
 angular.module('cmsDirective').directive('sidebar', function($rootScope, $http, $state){
 
@@ -17,7 +17,6 @@ angular.module('cmsDirective').directive('sidebar', function($rootScope, $http, 
         },
         template: __inline('./sidebar.html'),
         link: function(scope, elem, attr){
-
             var clsExpanded = 'expanded';
             var clsActive = 'active';
 
@@ -36,9 +35,51 @@ angular.module('cmsDirective').directive('sidebar', function($rootScope, $http, 
                 $elem.css('min-height', clientHeight - elemTop);
             }
 
+            $rootScope.$on('$stateChangeSuccess', onStateChangeSuccess);
+
+            function onStateChangeSuccess(e, toState) {
+                var $allLevel1s = $('.level1');
+                var $allLevel2s = $('.level2');
+                var menu = scope.menu;
+                var parentIndex = -1;
+                var childrenIndex = -1;
+                var stateName = toState.name;
+
+                if (!menu) {
+                    return;
+                }
+
+                for (var i = 0, iLen = menu.length; i < iLen; i ++ ) {
+                    for (var j = 0, jLen = menu[i].children.length; j < jLen; j ++) {
+                        if (stateName.indexOf(menu[i].key + '.' + menu[i].children[j].key) >= 0) {
+                            parentIndex = i;
+                            childrenIndex = j;
+                            break;
+                        }
+                    }
+                    if (parentIndex >= 0) {
+                        break;
+                    }
+                }
+
+                if (parentIndex === -1) {
+                    return;
+                }
+
+                $allLevel1s.removeClass('active');
+                $allLevel2s.removeClass('active');
+
+                let $levelWrap = $('.level1-wrapper').eq(parentIndex);
+
+                $levelWrap.find('.level1').addClass('active');
+                $levelWrap.find('.level2').eq(childrenIndex).addClass('active');
+
+            }
+
+
             scope.level1ClickHandler = function(e, level1){
                 var $tar = $(e.target);
-                var $level1Wrapper = $tar.parent();
+                var $level1Wrapper = $tar.closest('.level1-wrapper');
 
                 var $allLevel1s = $('.level1');
                 var $allLevel2s = $('.level2');
@@ -88,7 +129,11 @@ angular.module('cmsDirective').directive('sidebar', function($rootScope, $http, 
                 // }
 
                 $allLevel1s.removeClass(clsActive);
-                $tar.addClass(clsActive);
+                if($tar.hasClass('level1')) {
+                    $tar.addClass(clsActive);
+                } else {
+                    $tar.parent().addClass(clsActive);
+                }
 
                 if(!(level1.children instanceof Array && level1.children.length > 0)){
                     // 没有子节点
@@ -96,7 +141,7 @@ angular.module('cmsDirective').directive('sidebar', function($rootScope, $http, 
                     $state.go(scope.baseKey + '.' + level1.key);
                 }
 
-                    
+
             };
 
             scope.level2ClickHandler = function(e, level1, level2){
@@ -114,6 +159,31 @@ angular.module('cmsDirective').directive('sidebar', function($rootScope, $http, 
                 $state.go(scope.baseKey + '.' + level1.key + '.' + level2.key);
             }
 
+
+            scope.level1HasAuth = function(level1){
+                var hasAuth = false;
+
+                if(level1.auth){
+
+                    hasAuth = $rootScope.hasAuth(level1.auth);
+                }else{
+
+                    for(var i = 0, len = level1.children.length; i < len; i++){
+                        hasAuth = scope.level2HasAuth(level1.children[i]);
+
+                        if(hasAuth){
+                            break;
+                        }
+                    }
+                }
+
+                return hasAuth;
+            };
+
+
+            scope.level2HasAuth = function(level2){
+                return !level2.auth || $rootScope.hasAuth(level2.auth);
+            };
 
 
             // $http.get('/console/sidebar')

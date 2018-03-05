@@ -1,0 +1,15 @@
+ <label class="ui-dib ry-checkbox" >
+    <span class="chb inline-block" ng-class="{checked: ngModel, disabled: readOnly}">
+        <input
+            type="checkbox"
+            ng-change="vm.config.change(ngModel)"
+            ng-model="ngModel"
+            ng-click="click()"
+            ng-disabled="readOnly"
+            ng-indeterminate="vm.config.indeterminate"
+        >
+        <i></i>
+    </span>
+    <span ng-transclude></span>
+</label>
+

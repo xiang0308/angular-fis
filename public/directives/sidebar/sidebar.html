@@ -2,6 +2,7 @@
 <nav class="w-sidebar">
     <div class="level1-wrapper" 
         ng-repeat="level1 in menu"
+        ng-if="level1HasAuth(level1)"
         ng-class="{expanded: $first}">
 
         <div class="level1"
@@ -16,6 +17,7 @@
             ng-if="level1.children && level1.children.length > 0">
             
             <div class="level2" ng-repeat="level2 in level1.children"
+                ng-if="level2HasAuth(level2)"
                 ng-click="level2ClickHandler($event, level1, level2)">{{level2.title}}</div> 
         </div>
     </div>

@@ -1,0 +1,8 @@
+<section >
+    <span ng-if="vm.config.data != null" class="label label-default" ng-class="{
+        'label-danger': vm.config.isDanger,
+        'label-success': !vm.config.isDanger
+    }">
+        {{vm.config.data}}
+    </span>
+</section>

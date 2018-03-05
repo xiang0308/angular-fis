@@ -1,8 +1,12 @@
 <section class="ry-tabs">
-    <div
-        ng-repeat="item in vm.list track by $index"
-        ng-click="vm.changeSelectedIndex($index)"
-        ng-class="{'ui-item': true,'active': $index == vm.selectedIndex}">
+    <span
+        ng-repeat="item in vm.config.data track by $index"
+        ng-click="vm.change($index)"
+        class="ui-item"
+        ng-class="{
+            'active': $index === vm.config.selectedIndex,
+            'has-error': vm.config.error[$index]
+        }">
         {{item.text}}
-    </div>
+    </span>
 </section>

@@ -1,0 +1,13 @@
+<div class="dt-ry-page">
+	<div class="ui-pager-jumper">
+		<input type="text" class="form-control" ng-model="jumpPage">
+		<a ng-click="jumpToPage()">GO</a>
+	</div>
+	<uib-pagination total-items="pageOptions.totalCount" ng-model="pageOptions.currentPage"
+		items-per-page="pageOptions.pageSize"  max-size="5"
+		previous-text="上一页" next-text="下一页"
+		ng-change="pageChangeHandler()" ></uib-pagination>
+	<div class="ui-pager-status" ng-if="pageOptions.totalPage > 0">
+		{{pageOptions.currentPage}}/{{pageOptions.totalPage}}
+	</div>
+</div>

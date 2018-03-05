@@ -1,77 +1,81 @@
 /*
- * @Author: wangxiang
- * @Date:   2017-08-25 15:25:33
+ * @Author: weijie
+ * @Date:   2017-08-22 12:24:11
  * @Last Modified by:   wangxiang
- * @Last Modified time: 2017-08-25 15:53:57
+ * @Last Modified time: 2018-01-25 15:53:50
  */
+/* global laydate */
 angular.module('cmsDirective')
     .directive('ryLayDate', ryLayDate);
 
+/**
+ * [ryLayDate layDate控件]
+ * @return {[type]} [description]
+ */
 function ryLayDate() {
     return {
         restrict: 'EA',
         scope: {
             config: '='
         },
-        template: __inline('./ry_lay_date.html'),
-        transclude: true,
+        template: __inline('./ry-lay-date.html'),
         replace: true,
         controller: ryLayDateCtrl,
         controllerAs: 'vm'
     };
 
+    /**
+     * [ryLayDateCtrl layDate控件-控制器]
+     * @param  {[type]} $scope   [description]
+     * @param  {[type]} $element [description]
+     * @return {[type]}          [description]
+     */
     function ryLayDateCtrl($scope, $element) {
-        let config = $scope.config;
-        let options = config.options;
+        let vm = this,
+            $el = $($element).find('input'),
+            unWatch;
 
-        if (typeof options.done !== 'function') {
-            options.done = function(value, date, endDate) { // 控件选择完毕后的回调
-                if (config.changeDate) {
-                    config.changeDate(value, date, endDate);
-                }
-            }
+        unWatch = $scope.$watch('config', fnWatchConfig, true);
+
+        $scope.$on('$destroy', fnDestroy);
+
+        // laydate.render({
+        //     elem: $el.find('input')[0], //指定元素
+        //     type: 'time',
+        //     format: 'HH:mm'
+        // });
+        //
+        function ph(phVal) {
+            $el.attr('placeholder', phVal);
         }
 
-        // 执行一个laydate实例
-        laydate.render(angular.extend({}, {
-            elem: $element[0], //指定元素
-            ready: function(date) { // 控件初始打开的回调
-                // date: 得到初始的日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
-            },
-            change: function(value, date) { // 日期时间被切换后的回调
-            },
-            done: function(value, date, endDate) { // 控件选择完毕后的回调
-                // value: 得到日期生成的值，如：2017-08-18
-                // date: 得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
-                // endDate: 得到结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
-                if (config.changeDate) {
-                    config.changeDate(value, date, endDate);
-                }
-            }
-        }, options));
+        /**
+         * [fnDestroy 页面销毁]
+         * @return {[type]} [description]
+         */
+        function fnDestroy() {
+            unWatch();
+        }
+
+        /**
+         * [fnWatchConfig 监控config]
+         * @param  {[type]} newVal [description]
+         * @return {[type]}        [description]
+         */
+        function fnWatchConfig(newVal) {
+            let value = newVal.value;
+            vm.config = newVal;
+
+            $el.val(value);
+            ph(newVal.placeholder);
+
+            laydate.render($.extend(
+                {},
+                {
+                    elem: $el[0]
+                },
+                newVal || {}
+            ));
+        }
     }
 }
-
-// 调用：
-// js:
-// vm.test0 = '2010-08-10';
-// function changeDate(key) {
-//     return function(value, date) {
-//         $scope.$apply(function() {
-//             vm['test' + key] = value;
-//         });
-//     };
-// }
-// html:
-// <ry-lay-date
-//     class="form-control"
-//     config="{
-//         changeDate: vm.changeDate('0'),
-//         options: {
-//             type: 'date',
-//             value: vm.test0,
-//             done: null
-//         }
-//     }"
-// >
-// </ry-lay-date>

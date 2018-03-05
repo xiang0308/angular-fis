@@ -1,0 +1,38 @@
+/*
+* @Author: weijie
+* @Date:   2017-06-27 18:22:31
+ * @Last modified by:   weijie
+ * @Last modified time: 2017-09-01T15:46:56+08:00
+*/
+.ry-upload-preview {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #f3f3f3;
+    display: inline-block;
+    margin-right: 10px;
+    .ui-item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        max-width: 100%;
+        max-height: 100%;
+        margin: auto;
+    }
+    &-album-bg {
+        background-color: rgba(0, 0, 0, 0.8);
+        position: fixed;
+        z-index: 9998;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+    &-album-toolbar {
+        position: fixed;
+        z-index: 10000;
+        top: 0;
+    }
+}

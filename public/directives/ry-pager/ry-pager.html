@@ -1,0 +1,18 @@
+<div class="ry-pager clearfix">
+    <div class="ui-pager-jumper">
+        <input type="text" class="form-control" ng-model="vm.jumpPage">
+        <a ng-click="vm.config.change(vm.jumpPage)">GO</a>
+    </div>
+    <uib-pagination
+        total-items="vm.config.data.totalCount"
+        ng-model="vm.currentPage"
+        items-per-page="vm.config.data.pageSize"
+        max-size="5"
+        previous-text="上一页"
+        next-text="下一页"
+        ng-change="vm.config.change(vm.currentPage)">
+    </uib-pagination>
+    <div class="ui-pager-status" ng-if="vm.config.data.totalPage > 0">
+        {{vm.currentPage}}/{{vm.config.data.totalPage}}
+    </div>
+</div>
