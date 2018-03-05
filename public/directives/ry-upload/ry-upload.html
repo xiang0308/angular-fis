@@ -1,0 +1,27 @@
+<div class="ry-upload">
+    <a href=""
+        ng-click="vm.removePic()"
+        class="ui-close"
+        ng-if="!readOnly && vm.config.src"></a>
+
+    <ry-upload-preview config="vm.config" ng-if="{
+        src: vm.config.src,
+        type: vm.config.type
+    }">
+    </ry-upload-preview>
+    <ry-upload-btn ng-if="!vm.config.src" config="{
+        src: vm.config.src,
+        pattern: vm.config.pattern,
+        size: vm.config.size,
+        width: vm.config.width,
+        height: vm.config.height,
+        onUpload: vm.onUpload,
+        onProgress: vm.onProgress
+    }">
+        <div class="ui-add" ng-if="!vm.progress.show"></div>
+        <div class="ui-progress" ng-if="vm.progress.show" ng-style="{
+            width: vm.progress.val + '%'
+        }">
+        </div>
+    </ry-upload-btn>
+</div>

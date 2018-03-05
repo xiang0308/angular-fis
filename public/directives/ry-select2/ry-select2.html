@@ -1,0 +1,17 @@
+<div class="form-control ry-select2">
+    <select
+        class="form-control"
+        convert-to-number
+        ng-model="vm.selectedValue"
+        ng-change="vm.config.change(vm.selectedValue)"
+        ng-disabled="vm.config.readOnly"
+    >
+        <option value="">{{vm.config.placeholder}}</option>
+        <option
+            ng-repeat="item in vm.config.data track by $index"
+            value="{{item.id}}"
+        >
+            {{item[vm.config.key ? vm.config.key : 'text']}}
+        </option>
+    </select>
+</div>

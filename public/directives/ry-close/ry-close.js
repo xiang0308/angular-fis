@@ -1,43 +1,56 @@
 /*
- * @Author: wangxiang
- * @Date:   2017-08-25 15:25:33
- * @Last Modified by:   wangxiang
- * @Last Modified time: 2017-08-25 15:55:08
- */
-
+* @Author: weijie
+* @Date:   2017-08-15 18:52:25
+ * @Last modified by:   weijie
+ * @Last modified time: 2017-08-31T12:28:22+08:00
+*/
 angular.module('cmsDirective')
-	.directive('ryClose', ryClose);
+    .directive('ryClose', ryClose);
 
 /**
- * [ryClose 关闭按钮-指令]
+ * [ryClose 弹窗关闭组件]
  * @return {[type]} [description]
  */
 function ryClose() {
-	return {
-		restrict: 'E',
-		replace: true,
-		transclude: true,
-		scope: {
-			closeAction: '='
-		},
-		template: __inline('./ry-close.html'),
-		controller: ryCloseCtrl,
-		controllerAs: 'vm'
-	};
+    return {
+        restrict: 'EA',
+        scope: {
+            config: '='
+        },
+        template: __inline('./ry-close.html'),
+        replace: true,
+        controller: ryCloseCtrl,
+        controllerAs: 'vm'
+    };
 
-	/**
-	 * [ryCloseCtrl 关闭按钮-控制器]
-	 * @param  {[type]} $scope       [description]
-	 * @param  {[type]} EventService [description]
-	 * @return {[type]}              [description]
-	 */
-	function ryCloseCtrl($scope, EventService) {
-		let vm = this;
+    /**
+     * [ryCloseCtrl 弹窗关闭组件-控制器]
+     * @param  {[type]} $scope [description]
+     * @return {[type]}        [description]
+     */
+    function ryCloseCtrl($scope) {
+        let vm = this,
+            unWatch;
 
-		vm.click = click;
+        unWatch = $scope.$watch('config', fnWatchConfig, true);
 
-		function click() {
-			EventService.fire($scope.closeAction || 'ryClose.closeModal');
-		}
-	}
+        $scope.$on('$destroy', fnDestroy);
+
+        /**
+         * [fnDestroy 页面销毁]
+         * @return {[type]} [description]
+         */
+        function fnDestroy() {
+            unWatch();
+        }
+
+        /**
+         * [fnWatchConfig 监控config]
+         * @param  {[type]} newVal [description]
+         * @return {[type]}        [description]
+         */
+        function fnWatchConfig(newVal) {
+            vm.config = newVal;
+        }
+    }
 }

@@ -1,0 +1,29 @@
+<section class="dt-ry-mall-list">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th width="310">商场名称</th>
+				<th width="560">详细地址</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in vm.mallList">
+				<td>{{item.name}}</td>
+				<td>{{item.mallAddress.pro}}{{item.mallAddress.city}}{{item.mallAddress.area}}{{item.mallAddress.bussiness}}{{item.mallAddress.address}}</td>
+				<td>
+					<a ng-click="vm.associate(item)" ng-disabled="item.id==relations.id?true:false" ng-class="item.id==relations.id?'gray':''">关联</a>
+				</td>
+			</tr>
+			<tr ng-if="!vm.mallList || vm.mallList.length==0">
+				<td colspan="3" class="text-center">暂无记录</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="pull">
+		<div class="pull-left"></div>
+		<div class="pull-right">
+			<ry-page page-options="vm.pageOptions" action="vm.pageAction"></ry-page>
+		</div>
+	</div>
+</section>

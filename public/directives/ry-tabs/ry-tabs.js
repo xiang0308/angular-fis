@@ -1,66 +1,77 @@
 /*
- * @Author: wangxiang
- * @Date:   2017-08-25 15:25:33
- * @Last Modified by:   wangxiang
- * @Last Modified time: 2017-08-25 15:52:27
- */
+* @Author: weijie
+* @Date:   2017-06-30 12:03:57
+ * @Last modified by:   weijie
+ * @Last modified time: 2017-08-31T12:35:22+08:00
+*/
 
-angular
-    .module('cmsDirective')
+'use strict';
+angular.module('cmsDirective')
     .directive('ryTabs', ryTabs);
 
 /**
- * [ryTabs tabs-指令]
+ * [ryTabs 选项卡]
  * @return {[type]} [description]
  */
 function ryTabs() {
     return {
-        restrict: 'E',
-        replace: true,
-        transclude: false,
+        restrict: 'EA',
         scope: {
-            tabs: '=',
-            initAction: '=',
-            selectedAction: '='
+            config: '='
         },
         template: __inline('./ry-tabs.html'),
+        transclude: true,
+        replace: true,
         controller: ryTabsCtrl,
         controllerAs: 'vm'
     };
 
     /**
-     * [ryTabsCtrl tabs-控制器]
-     * @param  {[type]} $scope       [description]
-     * @param  {[type]} EventService [description]
-     * @return {[type]}              [description]
+     * [ryTabsCtrl 选项卡-控制器]
+     * @param  {[type]} $scope [description]
+     * @return {[type]}        [description]
      */
-    function ryTabsCtrl($scope, EventService) {
+    function ryTabsCtrl($scope) {
         let vm = this,
-            tabs = $scope.tabs,
-            selectedIndex = tabs.selectedIndex,
-            selectedAction = $scope.selectedAction,
-            initAction = $scope.initAction;
+            unWatch;
 
-        vm.changeSelectedIndex = changeSelectedIndex;
-        vm.list = tabs.list;
-        vm.selectedIndex = selectedIndex;
-
-        EventService
-            .on(initAction, function() {
-                changeSelectedIndex(vm.selectedIndex)
-            });
-
-        changeSelectedIndex(selectedIndex);
-
+        vm.change = change;
+        $scope.$on('$destroy', fnDestroy);
+        unWatch = $scope.$watch('config', fnWatchConfig, true);
 
         /**
-         * [changeSelectedIndex 修改索引]
+         * [fnWatchConfig 监控config]
+         * @param  {[type]} newVal [description]
+         * @return {[type]}        [description]
+         */
+        function fnWatchConfig(newVal) {
+            vm.config = newVal;
+
+            if (vm.selectedIndex !== newVal.selectedIndex) {
+                change(newVal.selectedIndex);
+            }
+        }
+
+        /**
+         * [change 改变]
          * @param  {[type]} index [description]
          * @return {[type]}       [description]
          */
-        function changeSelectedIndex(index) {
+        function change(index) {
             vm.selectedIndex = index;
-            EventService.fire(selectedAction, vm.list[index]);
+            vm.config.selectedIndex = index;
+
+            if (vm.config.change) {
+                vm.config.change(index, vm.config.data[index]);
+            }
+        }
+
+        /**
+         * [fnDestroy 页面销毁]
+         * @return {[type]} [description]
+         */
+        function fnDestroy() {
+            unWatch();
         }
     }
 }

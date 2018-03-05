@@ -1,0 +1,38 @@
+/**
+ * @file tab样式
+ * @author zhaoran
+ * @date 2015-06-08
+ */
+
+.w-mytab{
+    height: 30px;
+    border-width: 1px;
+    border-style: solid;
+
+    a{
+        display: block;
+        position: relative;
+        float: left;
+        margin-right: -1px;
+
+        width: 99px;
+
+        text-align: center;
+        line-height: 28px;
+        border: 1px solid #ddd;
+        border-bottom: none;
+
+
+        &.active{
+
+            width: 100px;
+            // margin-left: -1px;
+            // 
+            z-index: 1;
+
+            color: #fff;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+    }
+}

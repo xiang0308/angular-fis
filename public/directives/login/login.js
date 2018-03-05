@@ -1,15 +1,15 @@
-/*
- * @Author: wangxiang
- * @Date:   2017-08-25 15:25:33
- * @Last Modified by:   wangxiang
- * @Last Modified time: 2017-08-25 15:59:25
+/**
+ * @file 登录
+ * @author zhaoran
+ * @date 2015-07-21
  */
-angular.module('cmsDirective').factory('Login', function($http, $q, $modal, loginService){
+
+angular.module('cmsDirective').factory('Login', function($http, $q, $uibModal, loginService){
 
     return {
         popup: function(){
 
-            return $modal.open({
+            return $uibModal.open({
                 templateUrl: __uri('./login.html'),
                 backdrop: 'static',
                 keyboard: false,
@@ -39,14 +39,14 @@ angular.module('cmsDirective').factory('Login', function($http, $q, $modal, logi
                         password: {
                             require: false
                         }
-                    };
-
-                    function checkValidate(){
+                    };  
+            
+                    function checkValidate(){   
 
                         $scope.$form = angular.copy($defaultForm);
 
                         // $scope.$form.valid = false;
-
+                        
                         $('.login-area input[type="text"]').removeClass('border-blink');
                         $('.login-area input[type="password"]').removeClass('border-blink');
 
@@ -66,7 +66,7 @@ angular.module('cmsDirective').factory('Login', function($http, $q, $modal, logi
                             setTimeout(function(){
                                 $('.login-area input[type="password"]').addClass('border-blink');
                             }, 0);
-
+                            
                             $scope.$form.valid = false;
                         }
 
@@ -79,7 +79,7 @@ angular.module('cmsDirective').factory('Login', function($http, $q, $modal, logi
                         if(!$scope.$form.valid){
                             return;
                         }
-
+                        
                         if($scope.rememberMe){
                             window.localStorage.setItem('cms_frontend.userName', $scope.params.userName);
                         }
@@ -107,7 +107,7 @@ angular.module('cmsDirective').factory('Login', function($http, $q, $modal, logi
                     function keydownHandler(e){
 
                         // console.log(e);
-
+                        
                         if(e.keyCode == 13){
                             login();
                         }

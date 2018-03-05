@@ -1,0 +1,24 @@
+<div class="ry-upload-btn">
+    <div
+        class="ui-btn"
+        ng-if="!vm.config.ratio && vm.config.lock === true"
+        ngf-select="vm.upload($files, $invalidFiles)"
+        ngf-max-width="vm.config.width"
+        ngf-max-height="vm.config.height"
+        ngf-min-width="vm.config.width"
+        ngf-min-height="vm.config.height"
+        ngf-ratio="vm.config.ratio"
+        ngf-pattern="vm.config.pattern"
+        ngf-max-size="vm.config.size">
+        <div ng-transclude></div>
+    </div>
+    <div
+        class="ui-btn"
+        ng-if="!vm.config.ratio && !vm.config.lock"
+        ngf-select="vm.upload($files, $invalidFiles)"
+        ngf-ratio="vm.config.ratio"
+        ngf-pattern="vm.config.pattern"
+        ngf-max-size="vm.config.size">
+        <div ng-transclude></div>
+    </div>
+</div>

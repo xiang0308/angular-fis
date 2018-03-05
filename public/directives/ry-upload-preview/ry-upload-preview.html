@@ -1,0 +1,18 @@
+<div class="ry-upload-preview" ng-click="vm.click(vm.config.index, vm.config.list)" index="{{vm.config.index}}">
+    <video autoplay="autoplay" loop="loop" ng-if="vm.config.type ==='video'" class="ui-item">
+        <source ng-src="{{vm.config.src|trustUrl}}" ry-observe-src/>
+    </video>
+    <img
+        ry-observe-src
+        ng-src="{{vm.config.src}}"
+        ng-if="vm.config.type === 'img'"
+        class="ui-item"/>
+    <embed
+        align="center"
+        ry-observe-src
+        ng-src="{{vm.config.src|trustUrl}}"
+        class="ui-item"
+        ng-if="vm.config.type === 'flash'"
+        type="application/x-shockwave-flash"
+        pluginspage="http://www.macromedia.com/go/getflashplayer" />
+</div>

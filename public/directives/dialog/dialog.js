@@ -1,34 +1,17 @@
-/*
- * @Author: wangxiang
- * @Date:   2017-08-25 15:25:33
- * @Last Modified by:   wangxiang
- * @Last Modified time: 2017-08-25 15:59:30
+/**
+ * @file 弹框
+ * @author zhaoran
+ * @date 2015-07-20
  */
-angular.module('cmsDirective').factory('Dialog', function($modal){
+
+
+angular.module('cmsDirective').factory('Dialog', function($uibModal){
 
     return {
         open: function(){},
-        toaster: function(content) {
-            return $modal.open({
-                templateUrl: __uri('./dialog.html'),
-                windowClass: 'window-dialog-toaster',
-                controller: function($scope, $timeout, content){
-                    $scope.content = content;
-                    $scope.isToaster = true;
-                    $timeout(function() {
-                        $scope.$close();
-                    }, 3000);
-                },
-                resolve: {
-                    content: function(){
-                        return content || '提示';
-                    }
-                }
-            }).result;
-        },
         confirm: function(title, content, btns){
 
-            $modal.open({
+            return $uibModal.open({
                 templateUrl: __uri('./dialog.html'),
                 windowClass: 'window-dialog-confirm',
                 controller: function($scope, title, content, btns){
@@ -52,17 +35,14 @@ angular.module('cmsDirective').factory('Dialog', function($modal){
 
                     if(typeof btns == 'function'){
 
-                        $scope.btns = angular.extend({}, defaultBtns, [{
-                            text: '确认',
-                            isImportant: false,
-                            isAsync: false,
+                        $scope.btns = angular.merge({}, defaultBtns, [{
                             clickFn: btns
                         }]);
                     }else if(btns instanceof Array){
                         $scope.btns = btns;
                     }else{
-                        $scope.btns = angular.extend({}, defaultBtns);
-                    }
+                        $scope.btns = angular.merge({}, defaultBtns);
+                    } 
 
                     $scope.btnClick = function(index){
 
@@ -92,11 +72,11 @@ angular.module('cmsDirective').factory('Dialog', function($modal){
                         return btns;
                     }
                 }
-            });
+            }).result;
         },
         alert: function(title, content, btns){
 
-            return $modal.open({
+            return $uibModal.open({
                 templateUrl: __uri('./dialog.html'),
                 windowClass: 'window-dialog-confirm',
                 controller: function($scope, title, content, btns){
@@ -114,14 +94,14 @@ angular.module('cmsDirective').factory('Dialog', function($modal){
 
                     if(typeof btns == 'function'){
 
-                        $scope.btns = angular.extend({}, defaultBtns, [{
+                        $scope.btns = angular.merge({}, defaultBtns, [{
                             clickFn: btns
                         }]);
                     }else if(btns instanceof Array){
                         $scope.btns = btns;
                     }else{
-                        $scope.btns = angular.extend({}, defaultBtns);
-                    }
+                        $scope.btns = angular.merge({}, defaultBtns);
+                    } 
 
                     $scope.btnClick = function(index){
 

@@ -1,0 +1,27 @@
+<section class="dt-ry-mall-search p-list">
+    <form class="form-inline" role="form">
+        <div class="form-group">
+            <label>商场ID：</label>
+            <input
+                type="text"
+                class="form-control"
+                placeholder=""
+                ng-model="vm.field.mall_id"
+            >
+        </div>
+        <div class="form-group">
+            <label>商场名称：</label>
+            <input
+                type="text"
+                class="form-control"
+                placeholder=""
+                ng-model="vm.field.name"
+            >
+        </div>
+        <ry-trading-area-search change-action="vm.changeAction" reset-action="vm.resetAction"></ry-trading-area-search>
+        <div class="form-group">
+            <button type="submit" class="cms-btn cms-btn-heavy" ng-click="vm.submit()">查询</button>
+            <button type="submit" class="cms-btn" ng-click="vm.reset()">清空查询条件</button>
+        </div>
+    </form>
+</section>
