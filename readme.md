@@ -97,7 +97,6 @@ index.html-->public/main/app-->business/项目名/router-->各子模块router
 
 #### 	4.1代码通过git推送到远程
 ### 5.其他
-
 #### 	5.1公共组件说明
 
 |         公共组件名称         |        公共组件描述         |
