@@ -4,19 +4,19 @@
 
 ##### 	1.1拉取代码
 
-​		代码仓库：http://git.internal.rongyi.com/
+​	代码仓库：http://git.internal.rongyi.com/
 
 ##### 	1.2安装环境
 
-​		建议安装`node7.0.0`以下版本https://nodejs.org/en/blog/release/v6.2.0/
+​	建议安装`node7.0.0`以下版本https://nodejs.org/en/blog/release/v6.2.0/
 
-​		`npm i -g fis`
+​	`npm i -g fis`
 
-​		`npm i -g fis-angular`
+​	`npm i -g fis-angular`
 
 ##### 	1.3项目介绍
 
-​		整个代码是通过angular开发，路由里面通过`mod.js`加载依赖文件，页面加载顺序是
+​	整个代码是通过angular开发，路由里面通过`mod.js`加载依赖文件，页面加载顺序是
 
 ```
 index.html-->public/main/app-->business/项目名/router-->各子模块router
@@ -93,13 +93,12 @@ index.html-->public/main/app-->business/项目名/router-->各子模块router
 
 ​		（5）关闭 stop.bat
 
-### 5.项目部署
+### 4.项目部署
 
 #### 	4.1代码通过git推送到远程
+### 5.其他
 
-### 6.其他
-
-#### 	6.1公共组件说明
+#### 	5.1公共组件说明
 
 |         公共组件名称         |        公共组件描述         |
 | :--------------------: | :-------------------: |
