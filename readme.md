@@ -22,14 +22,7 @@
 index.html-->public/main/app-->business/项目名/router-->各子模块router
 ```
 
-### 2.联调地址
-
-​	商家后台-联调
-
-​		[java1.rongyi.com/bsoms/users/login]()
-​	大运营-联调
-​		[java1.rongyi.com/ryoms/main/index]()
-### 3.项目结构
+### 2.项目结构
 ```tree
 ├─.bowerrc                            	// bower的文件代理
 ├─.gitignore                          	//git设置忽略的文件
@@ -68,13 +61,13 @@ index.html-->public/main/app-->business/项目名/router-->各子模块router
 |  	|   └─services.js					// 业务逻辑服务配置
 ```
 
-### 4.项目运行
+### 3.项目运行
 
-#### 				4.1全局安装`fis-angular`
+#### 				3.1全局安装`fis-angular`
 
 ​		`npm i -g fis-angular`
 
-#### 				4.2项目发布到远程
+#### 				3.2项目发布到远程
 
 ​		`fisa release -cwd remote`（大运营）
 
@@ -82,7 +75,7 @@ index.html-->public/main/app-->business/项目名/router-->各子模块router
 
 ​		remote，rd在`fis-conf.js`中查看配置
 
-#### 			4.3项目发布到本地
+#### 			3.3项目发布到本地
 
 ​		`fisa release -cwL`
 
@@ -102,15 +95,8 @@ index.html-->public/main/app-->business/项目名/router-->各子模块router
 
 ### 5.项目部署
 
-#### 	5.1代码通过git推送到远程
+#### 	4.1代码通过git推送到远程
 
-<<<<<<< HEAD
-=======
-#### 	5.2发提测邮件，邮件内容和下列地址中类似
-
-​		http://wiki.rongyi.so/pages/viewpage.action?pageId=40075371
-
->>>>>>> 9b8629dad99c23c3f03c71710defbd99a35b7b3a
 ### 6.其他
 
 #### 	6.1公共组件说明
