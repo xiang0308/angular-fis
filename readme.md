@@ -104,6 +104,13 @@ index.html-->public/main/app-->business/项目名/router-->各子模块router
 
 #### 	5.1代码通过git推送到远程
 
+<<<<<<< HEAD
+=======
+#### 	5.2发提测邮件，邮件内容和下列地址中类似
+
+​		http://wiki.rongyi.so/pages/viewpage.action?pageId=40075371
+
+>>>>>>> 9b8629dad99c23c3f03c71710defbd99a35b7b3a
 ### 6.其他
 
 #### 	6.1公共组件说明
