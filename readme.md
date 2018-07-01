@@ -95,7 +95,11 @@ index.html-->public/main/app-->business/项目名/router-->各子模块router
 
 ### 5.项目部署
 
+<<<<<<< HEAD
 #### 	4.1代码通过git推送到远程
+=======
+#### 	5.1代码通过git推送到远程
+>>>>>>> 9e829f0159fb3b3cb10b6ffb102b38177d17a6cb
 
 ### 6.其他
 
