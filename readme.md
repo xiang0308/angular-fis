@@ -4,9 +4,9 @@
 
  建议安装   `  node7.0.0`以下版本https://nodejs.org/en/blog/release/v6.2.0/
 
-​	`npm i -g fis`
+`npm i -g fis`
 
-​	`npm i -g fis-angular`
+`npm i -g fis-angular`
 
 ### 项目结构概览及说明
 ```tree
@@ -58,7 +58,7 @@
 `fisa release -cwL` 
 
 ### 封装公共组件
-| 公共组件名称           | 公共组件描述                      |
+| 组件名称               | 描述                              |
 | :--------------------- | :-------------------------------- |
 | convert-to-number      | 下拉框默认是string，自动转换成int |
 | crumb                  | 面包屑                            |
